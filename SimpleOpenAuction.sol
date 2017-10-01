@@ -27,10 +27,10 @@ contract SimpleAuction {
   /// seconds bidding time on behalf of the
   /// beneficiary address `_beneficiary`.
 
-  function SimpleAuction(uint _biggingTime, address _beneficiary) {
+  function SimpleAuction(uint _biddingTime, address _beneficiary) {
     beneficiary = _beneficiary;
     auctionStart = now;
-    biddingTime = _biggingTime;
+    biddingTime = _biddingTime;
   }
 
   /// Bid on the auction with the value sent
@@ -72,6 +72,16 @@ contract SimpleAuction {
       }
     }
     return true;
+  }
+
+  /// return time remaining in auction
+  function timeRemaining() returns (uint) {
+      uint remaining = auctionStart + biddingTime - now
+      if (rmaining > 0) {
+        return remaining
+      } else {
+        return 0
+      }
   }
 
   /// End the auction and send the higest bid to the benificiary.
